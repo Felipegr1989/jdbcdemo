@@ -17,10 +17,12 @@ public class Driver {
 			// 2. create a statement
 			Statement myStmt = myConn.createStatement();
 			// 3. execute SQL query
-			String mySql = "update employee " + " set email = 'demo@gmail.com'" + " where id = 1";
-			myStmt.executeUpdate(mySql);
+			String mySql = "delete from employee where last_name='mclaren'";
 			
-				System.out.println("update complete. ");
+			int rowsAffected = myStmt.executeUpdate(mySql);
+			
+			System.out.println("Rows Afected: " + rowsAffected);
+			System.out.println("delete complete. ");
 			
 		} catch (Exception exc) {
 			exc.printStackTrace();
