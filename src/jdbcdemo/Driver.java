@@ -17,11 +17,10 @@ public class Driver {
 			// 2. create a statement
 			Statement myStmt = myConn.createStatement();
 			// 3. execute SQL query
-			String mySql = "insert into employee" + "(last_name, first_name, email)"
-					+ "values ('guerrero', 'luisa', 'luisa.guerrero@gmail.com')";
+			String mySql = "update employee " + " set email = 'demo@gmail.com'" + " where id = 1";
 			myStmt.executeUpdate(mySql);
 			
-				System.out.println("insert complete. ");
+				System.out.println("update complete. ");
 			
 		} catch (Exception exc) {
 			exc.printStackTrace();
