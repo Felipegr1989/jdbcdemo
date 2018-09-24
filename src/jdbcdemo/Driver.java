@@ -5,19 +5,23 @@ import java.sql.*;
 public class Driver {
 
 	public static void main(String[] args) {
+
+		String url = "jdbc:mysql://localhost:3306/Demo?verifyServerCertificate=false&useSSL=true";
+		String user = "root";
+		String password = "";
+
 		try {
-			//1.  get a connection to database
-			Connection myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Demo?verifyServerCertificate=false&useSSL=true","root" ,"");
-			
-			//2. create a statement
+			// 1. get a connection to database
+			Connection myConn = DriverManager.getConnection(url, user, password);
+
+			// 2. create a statement
 			Statement myStmt = myConn.createStatement();
-			//3. execute SQL query
-			ResultSet myRs = myStmt.executeQuery("select * from employee");
-			//4. process the result set
-			while(myRs.next()) {
-				System.out.println(myRs.getString("last_name") + " , " + myRs.getString("first_name"));
-			}
+			// 3. execute SQL query
+			String mySql = "insert into employee" + "(last_name, first_name, email)"
+					+ "values ('guerrero', 'luisa', 'luisa.guerrero@gmail.com')";
+			myStmt.executeUpdate(mySql);
 			
+				System.out.println("insert complete. ");
 			
 		} catch (Exception exc) {
 			exc.printStackTrace();
